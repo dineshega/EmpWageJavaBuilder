@@ -4,8 +4,21 @@ package com.bridgelabz;
 public class EmployeeJavaProb {
 	public static final int IS_FULLTIME = 1;
 	public static final int IS_PARTTIME = 2;
+	private int totalempWage;
+	private final String Company;
+	private final int EMP_RATE_PER_HOUR;
+	private final int NO_OF_WORKING_DAYS;
+	private final int MAX_HRS_IN_MONTH;
 	
-	void EmployeeW(int EMP_RATE_PER_HOUR, int NO_OF_WORKING_DAYS, int MAX_HRS_IN_MONTH)
+	public EmployeeJavaProb(String cmp, int ERPH, int NOWD, int MHIM)
+	{
+		this.Company = cmp;
+		this.EMP_RATE_PER_HOUR = ERPH;
+		this.NO_OF_WORKING_DAYS = NOWD;
+		this.MAX_HRS_IN_MONTH = MHIM;
+	}
+	
+	public void EmployeeW()
 	{
 				int empHrs = 0;
 				int totalempHrs = 0;
@@ -29,21 +42,16 @@ public class EmployeeJavaProb {
 				totalempHrs += empHrs;
 				System.out.println("Day " + totalWorkingDays + "\tEMP HRS: " + empHrs);
 			}
-			int totalempWage = totalempHrs * EMP_RATE_PER_HOUR;	
-			System.out.println("total Emp Wage: " + totalempWage);
+			totalempWage = totalempHrs * EMP_RATE_PER_HOUR;	
+			System.out.println("Total Employee Wage for Company " + Company + " is : " + totalempWage);
 	}
 public static void main(String[] args)
 {
-	EmployeeJavaProb cmp1=new EmployeeJavaProb();
-	System.out.println("TCS");
-	cmp1.EmployeeW(20,20,160);
-		
-	EmployeeJavaProb cmp2=new EmployeeJavaProb();
-	System.out.println("HCL");
-	cmp2.EmployeeW(25,23,120);
-	
-	EmployeeJavaProb cmp3=new EmployeeJavaProb();
-	System.out.println("Deliotte");
-	cmp3.EmployeeW(30,24,110);
+	EmployeeJavaProb TCS = new EmployeeJavaProb("TCS",20,20,160);
+	EmployeeJavaProb HCL=new EmployeeJavaProb("HCL",24,23,150);
+	EmployeeJavaProb Deliotte = new EmployeeJavaProb("Deliotte",28,23,140);
+	TCS.EmployeeW();
+	HCL.EmployeeW();
+	Deliotte.EmployeeW();
 }
 }
