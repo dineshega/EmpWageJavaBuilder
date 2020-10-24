@@ -2,15 +2,16 @@ package com.bridgelabz;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
-
-public class EmployeeJavaProb implements InterfaceEmpWage {
+public class EmployeeJavaProb  implements InterfaceEmpWage {
 	public int numOfCompanies = 0;
 	
 	private HashMap<Integer, Double> compEmpWageHashMap;
 	private ArrayList<CompanyEmpWage> compEmpWageArrayList;
 	
-	public EmployeeJavaProb() {
+	public EmployeeJavaProb()
+ 	{
 		compEmpWageHashMap = new HashMap<>();
 		compEmpWageArrayList = new ArrayList<>();
 	}
@@ -60,22 +61,41 @@ public class EmployeeJavaProb implements InterfaceEmpWage {
 			}
 			for (int j = 1; j <= compEmpWageHashMap.size(); j++) {
 
-				System.out.println("Day " + j + " - " + compEmpWageHashMap.get(j));
+				System.out.println("Day " + j + ", DailyWage " + compEmpWageHashMap.get(j));
 			}
 			int totalempWage =  totalempHrs * EmpWage.EMP_RATE_PER_HOUR;
 			System.out.println("Total Employee Wage for Company " + EmpWage.Company + " is : " + totalempWage);
 	}
 public static void main(String[] args)
 {
-
+	int opt;
+	int a=1;
+	System.out.println("Welcome to Employee Wage Computation Program");
+	Scanner sc = new Scanner(System.in);
+	
 	InterfaceEmpWage cmp = new EmployeeJavaProb();
-	cmp.addComEmpWage("TCS",20,20,160);
-
-	cmp.addComEmpWage("HCL",25,23,120);
-	
-	cmp.addComEmpWage("Deliotte",30,24,110);
-	
-	cmp.computeEmpWage();
+	while (a == 1)
+			{
+				System.out.println("Enter the choice 1-TCS, 2-HCL, 3-Deliotte, 4-exit");
+				opt = sc.nextInt();
+				if (opt == 1)
+				{
+					cmp.addComEmpWage("TCS",20,20,160);
+				}
+				else if (opt == 2)
+				{
+					cmp.addComEmpWage("HCL",25,23,120);
+				}
+				else if (opt == 3)
+				{
+					cmp.addComEmpWage("Deliotte",30,24,110);
+				}
+				else
+				{
+					System.exit(0);
+				}
+				cmp.computeEmpWage();
+			}
 }
 
 }
