@@ -1,19 +1,21 @@
 package com.bridgelabz;
 
 
-public class EmployeeJavaProb {
+public class EmployeeJavaProb implements InterfaceEmpWage {
 	public int numOfCompanies = 0;
 	
 	CompanyEmpWage EmpWageArray[];
 	public EmployeeJavaProb() {	
 		EmpWageArray = new CompanyEmpWage[5];
 	}
-	void addComEmpWage(String company, int EMP_RATE_PER_HOUR, int NO_OF_WORKING_DAYS, int MAX_HRS_IN_MONTH)
+	@Override
+	public void addComEmpWage(String company, int EMP_RATE_PER_HOUR, int NO_OF_WORKING_DAYS, int MAX_HRS_IN_MONTH)
 	{
 		EmpWageArray[numOfCompanies] = new CompanyEmpWage(company, EMP_RATE_PER_HOUR, NO_OF_WORKING_DAYS, MAX_HRS_IN_MONTH);
 		numOfCompanies++;
 	}
-	void computeEmpWage() {
+	@Override
+	public void computeEmpWage() {
 		for (int i = 0; i < numOfCompanies; i++)
 		{
 			EmployeeW(EmpWageArray[i]);
@@ -49,7 +51,9 @@ public class EmployeeJavaProb {
 	}
 public static void main(String[] args)
 {
-	EmployeeJavaProb cmp=new EmployeeJavaProb();
+
+
+	InterfaceEmpWage cmp = new EmployeeJavaProb();
 	cmp.addComEmpWage("TCS",20,20,160);
 
 	cmp.addComEmpWage("HCL",25,23,120);
