@@ -1,13 +1,17 @@
 package com.bridgelabz;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
 
 public class EmployeeJavaProb implements InterfaceEmpWage {
 	public int numOfCompanies = 0;
 	
+	private HashMap<Integer, Double> compEmpWageHashMap;
 	private ArrayList<CompanyEmpWage> compEmpWageArrayList;
 	
-	public EmployeeJavaProb() {	
+	public EmployeeJavaProb() {
+		compEmpWageHashMap = new HashMap<>();
 		compEmpWageArrayList = new ArrayList<>();
 	}
 	@Override
@@ -31,9 +35,11 @@ public class EmployeeJavaProb implements InterfaceEmpWage {
 				int empHrs = 0;
 				int totalempHrs = 0;
 				int totalWorkingDays = 0;
+				double dailyWage = 0;
 			while (totalempHrs < EmpWage.MAX_HRS_IN_MONTH && totalWorkingDays < EmpWage.NO_OF_WORKING_DAYS)
 			{
 				totalWorkingDays++;
+				int day = totalWorkingDays;
 				int empCheck = (int) (Math.floor(Math.random() * 10) % 3);
 		
 				switch (empCheck)
@@ -47,15 +53,20 @@ public class EmployeeJavaProb implements InterfaceEmpWage {
 				default:
 					empHrs = 0;
 				}
+				dailyWage = empHrs * EmpWage.EMP_RATE_PER_HOUR;
 				totalempHrs += empHrs;
-				System.out.println("Day " + totalWorkingDays + "\tEMP HRS: " + empHrs);
-			}	
+				System.out.println("Day " + day + "\tEMP HRS: " + empHrs);
+				compEmpWageHashMap.put(day, dailyWage);	
+			}
+			for (int j = 1; j <= compEmpWageHashMap.size(); j++) {
+
+				System.out.println("Day " + j + " - " + compEmpWageHashMap.get(j));
+			}
 			int totalempWage =  totalempHrs * EmpWage.EMP_RATE_PER_HOUR;
 			System.out.println("Total Employee Wage for Company " + EmpWage.Company + " is : " + totalempWage);
 	}
 public static void main(String[] args)
 {
-
 
 	InterfaceEmpWage cmp = new EmployeeJavaProb();
 	cmp.addComEmpWage("TCS",20,20,160);
@@ -66,4 +77,5 @@ public static void main(String[] args)
 	
 	cmp.computeEmpWage();
 }
+
 }
