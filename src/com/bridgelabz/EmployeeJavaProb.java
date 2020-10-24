@@ -1,13 +1,11 @@
 package com.bridgelabz;
 
+
 public class EmployeeJavaProb {
 	public static final int IS_FULLTIME = 1;
 	public static final int IS_PARTTIME = 2;
-	public static final int EMP_RATE_PER_HOUR = 20;
-	public static final int NO_OF_WORKING_DAYS = 20;
-	public static final int MAX_HRS_IN_MONTH = 160;
 	
-	void EmployeeW()
+	void EmployeeW(int EMP_RATE_PER_HOUR, int NO_OF_WORKING_DAYS, int MAX_HRS_IN_MONTH)
 	{
 				int empHrs = 0;
 				int totalempHrs = 0;
@@ -36,7 +34,16 @@ public class EmployeeJavaProb {
 	}
 public static void main(String[] args)
 {
-	EmployeeJavaProb Euc7=new EmployeeJavaProb();
-			Euc7.EmployeeW();
+	EmployeeJavaProb cmp1=new EmployeeJavaProb();
+	System.out.println("TCS");
+	cmp1.EmployeeW(20,20,160);
+		
+	EmployeeJavaProb cmp2=new EmployeeJavaProb();
+	System.out.println("HCL");
+	cmp2.EmployeeW(25,23,120);
+	
+	EmployeeJavaProb cmp3=new EmployeeJavaProb();
+	System.out.println("Deliotte");
+	cmp3.EmployeeW(30,24,110);
 }
 }
